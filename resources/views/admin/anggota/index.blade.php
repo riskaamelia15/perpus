@@ -6,6 +6,13 @@
 
 <br>
 @endsection
+@section ('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('js/sweetalert2.js')}}"></script>
+<script src="{{asset('js/delete.js')}}"></script>
+
+
+@endsection
 
 
 @section('content')
@@ -53,7 +60,7 @@
                                         @method('delete')
                                         @csrf
                                         <a href="{{route('anggota.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapusnya')">HAPUS</button>
+                                        <button type="submit" class="btn btn-danger delete-confirm">Delete</button>
                                         </form>
                                  </td>
                              </tr>

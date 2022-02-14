@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Alert;
 use Illuminate\Database\Eloquent\Model;
 
 class pinjam extends Model
@@ -33,5 +34,15 @@ class pinjam extends Model
         return $this->belongsTo('App\Models\petugas','petugas_id');
 
     }
+    // public function boot()
+    // {
+    //     parent::boot();
+    //     self::deleting(function($anggota){
+    //         if($anggota->bukus->count()>0){
+    //             Alert::error('failed','Data not deleted because buku have you');
+    //             return false;
+    //         }
+    //     });
+    // }
 
 }

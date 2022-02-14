@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use Illuminate\Http\Request;
+use Session;
+use Alert;
 
 class BukuController extends Controller
 {
@@ -54,7 +56,12 @@ class BukuController extends Controller
         $buku->penerbit_buku = $request->penerbit_buku;
         $buku->tahun_penerbit = $request->tahun_penerbit;
         $buku->stok = $request->stok;
+        Session::flash("flash_notification", [
+            "level" => "Berhasil",
+            "message" => "Data Berhasil Ditambah",
+        ]);
         $buku->save();
+        
 
         return redirect()->route('buku.index');
 
@@ -124,8 +131,10 @@ class BukuController extends Controller
      */
     public function destroy($id)
     {
-        $buku = Buku::findOrFail($id);
-        $buku->delete();
+        if(!Buku::destroy($id)){
+            return redirect()->back();
+        }
+        alert::success('Mantap','Data berhasil dihapus');
         return redirect()->route('buku.index');
     }
 }

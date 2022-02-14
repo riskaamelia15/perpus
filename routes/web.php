@@ -62,6 +62,7 @@ Route::group(['prefix' => 'user','middleware'=>['auth']],
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index2'])->name('home2');
 
 });
+     route::resource('user/buku',BukuController::class);
      route::resource('admin/buku',BukuController::class);
      route::resource('admin/anggota',AnggotaController::class);
      route::resource('admin/pengembalian',PengembalianController::class);

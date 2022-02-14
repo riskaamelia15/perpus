@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\anggota;
 use Illuminate\Http\Request;
+use Alert;
 
 class AnggotaController extends Controller
 {
@@ -120,8 +121,10 @@ class AnggotaController extends Controller
      */
     public function destroy($id)
     {
-        $anggota = Anggota::findOrFail($id);
-        $anggota->delete();
+        if(!Anggota::destroy($id)){
+            return redirect()->back();
+        }
+        alert::success('Mantap','Data berhasil dihapus');
         return redirect()->route('anggota.index');
     }
 }

@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Models;
-
+use Alert;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\pinjam;
 
 class anggota extends Model
 {
@@ -15,6 +16,16 @@ class anggota extends Model
 
     public function pinjams()
     {
-        $this->hasMany('App\Models\anggota','id_anggota');
+       return $this->hasMany('App\Models\pinjam','anggota_id');
+     }
+     public static function boot()
+     {
+         parent::boot();
+         self::deleting(function($anggota){
+             if($anggota->pinjams->count() > 0){
+                 Alert::error('Gagal!','Data tidak bisa dihapus');
+                 return false;
+             }
+         });
      }
 }

@@ -34,7 +34,7 @@
                             @error('judul_buku')
 
                             <span class="invalid-feedbaack" role="alert">
-                                <strong>{{$message}}</strong>
+                                <strong>Isi Data Buku</strong>
                             </span>
                             @enderror
                         </div>

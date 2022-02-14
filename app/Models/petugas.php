@@ -17,4 +17,5 @@ class petugas extends Model
     {
         $this->belongsto('App\Models\petugas','id_petugas');
      }
+        
 }
