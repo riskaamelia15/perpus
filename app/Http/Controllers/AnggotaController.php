@@ -99,7 +99,7 @@ class AnggotaController extends Controller
             'nama_anggota' => 'required',
             'jk_anggota' => 'required ',
             'jurusan_anggota' => 'required',
-            'no_telp_anggota' => 'required',
+            'no_telp_anggota' => 'required|numeric',
             'alamat' => 'required ',
         ]);
         $anggota = Anggota::findOrFail($id);
@@ -109,6 +109,7 @@ class AnggotaController extends Controller
         $anggota->jurusan_anggota = $request->jurusan_anggota;
         $anggota->no_telp_anggota = $request->no_telp_anggota;
         $anggota->alamat = $request->alamat;
+        Alert::success('data '.$buku->nama_anggota.'Berhasil Diedit');
         $anggota->save();
         return redirect()->route('anggota.index');
     }

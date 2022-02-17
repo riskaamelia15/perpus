@@ -17,16 +17,35 @@
                 <div class="card-body">
                     <form action="{{route('anggota.store')}}" method="post">
                         @csrf
+                        
                         <div class="form-group">
                             <label for="">Kode Anggota</label>
-                            <input type="text" name="kode_anggota" class="form-control @error('kode_anggota') is-invalid @enderror">
+                            <input type="text" name="kode_anggota" 
+                                class="form-control @error('kode_anggota') is-invalid @enderror">
+                            @error('kode_anggota')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="">Nama Anggota</label>
-                            <input type="text" name="nama_anggota" class="form-control @error('nama_anggota') is-invalid @enderror">
-                            <label for="">Jenis Kelamin</label>
-                            <select name="jk_anggota" class="form-control @error('jk_anggota') is-invalid @enderror">
+                            <input type="text" name="nama_anggota"
+                                class="form-control @error('nama_anggota') is-invalid @enderror">
+                            @error('nama_anggota')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>Masukan Nama Anggota</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                             <label for="">Jenis Kelamin</label>
+                             <select name="jk_anggota" class="form-control @error('jk_anggota') is-invalid @enderror">
                                 <option value="Laki-Laki">Laki-Laki</option>
                                 <option value="perempuan">Perempuan</option>
                             </select>
+
+                            
                             <label for="">Jurusan</label>
                             <select name="jurusan_anggota" class="form-control @error('jurusan_anggota') is-invalid @enderror">
                                 <option value="RPL">RPL</option>
@@ -34,10 +53,26 @@
                                 <option value="TKR">TKR</option>
 
                             </select>
-                            <label for="">no_telp</label>
-                            <input type="number" name="no_telp_anggota" class="form-control @error('no_telp_anggota') is-invalid @enderror">
-                            <label for="">Alamat</label>
-                            <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
+                            <div class="form-group">
+                                <label for="">No Telepon</label>
+                                <input type="numeric" min="11" max="13" name="no_telp_anggota
+                                    class="form-control @error('no_telp_anggota') is-invalid @enderror">
+                                @error('no_telp_anggota')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Alamat</label>
+                                <input type="text" name="alamat"
+                                    class="form-control @error('alamat') is-invalid @enderror">
+                                @error('alamat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
                             @error('nama_anggota')
 
@@ -45,7 +80,7 @@
                                 <strong>{{$message}}</strong>
                             </span>
                             @enderror
-                        </div>
+                        
                         <div class="form-group right">
                             <button type="reset" class="btn btn-outline-danger">Reset</button>
                             <button type="submit" class="btn btn-outline-primary">Simpan</button>

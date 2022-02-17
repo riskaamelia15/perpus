@@ -19,18 +19,66 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Kode Buku</label>
-                            <input type="text" name="kode_buku" class="form-control @error('kode_buku') is-invalid @enderror">
+                            <input type="text" name="kode_buku" 
+                                class="form-control @error('kode_buku') is-invalid @enderror">
+                            @error('kode_buku')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="">Judul Buku</label>
-                            <input type="text" name="judul_buku" class="form-control @error('judul_buku') is-invalid @enderror">
-                            <label for="">Penulis Buku</label>
-                            <input type="text" name="penulis_buku" class="form-control @error('penulis_buku') is-invalid @enderror">
-                            <label for="">Penerbit Buku</label>
-                            <input type="text" name="penerbit_buku" class="form-control @error('penerbit_buku') is-invalid @enderror">
-                            <label for="">Tahun Penerbit</label>
-                            <input type="number" name="tahun_penerbit" class="form-control @error('tahun_penerbit') is-invalid @enderror">
-                            <label for="">Stok</label>
-                            <input type="number" name="stok" class="form-control @error('stok') is-invalid @enderror">
+                            <input type="text" name="judul_buku"
+                                class="form-control @error('judul_buku') is-invalid @enderror">
+                            @error('judul_buku')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Penulis</label>
+                            <input type="text" name="penulis_buku" 
+                                class="form-control @error('penulis_buku') is-invalid @enderror">
+                            @error('penulis_buku')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
+                        <div class="form-group">
+                            <label for="">Penerbit</label>
+                            <input type="text" name="penerbit_buku"
+                                class="form-control @error('penerbit_buku') is-invalid @enderror">
+                            @error('penerbit_buku')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Tahun Terbit</label>
+                            <input type="numeric" name="tahun_penerbit"
+                                class="form-control @error('tahun_penerbit') is-invalid @enderror">
+                            @error('tahun_penerbit')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Stok</label>
+                            <input type="numeric" name="stok"
+                                class="form-control @error('stok') is-invalid @enderror">
+                            @error('stok')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                             @error('judul_buku')
 
                             <span class="invalid-feedbaack" role="alert">

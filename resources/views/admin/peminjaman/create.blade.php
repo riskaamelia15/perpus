@@ -18,10 +18,28 @@
                     <form action="{{route('peminjaman.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="">Tanggal Pinjam</label>
-                            <input type="date" name="tanggal_pinjam" class="form-control @error('tanggal_pinjam') is-invalid @enderror">
-                            <label for="">Tanggal Kembali</label>
-                            <input type="date" name="tanggal_kembali" class="form-control @error('tanggal_kembali') is-invalid @enderror">
+                          
+                            <div class="form-group">
+                                <label for="">Tanggal Pinjam</label>
+                                <input type="date" name="tanggal_pinjam"
+                                    class="form-control @error('tanggal_pinjam') is-invalid @enderror">
+                                @error('tanggal_pinjam')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tanggal Kembali</label>
+                                <input type="date" name="tanggal_kembali" 
+                                    class="form-control @error('tanggal_kembali') is-invalid @enderror">
+                                @error('tanggal_kembali')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
                             <div class="form-group">
                             <label for="">Nama Buku</label>
                             <select name="buku_id" class="form-control @error('buku_id') is-invalid @enderror" >
@@ -29,8 +47,23 @@
                                     <option value="{{$data->id}}">{{$data->judul_buku}}</option>
                                 @endforeach
                             </select>
-                            <label for="">Jumlah</label>
-                            <input type="number" name="jumlah" class="form-control @error('jumlah') is-invalid @enderror">
+                            @error('buku_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">jumlah</label>
+                                <input type="numeric" name="jumlah"
+                                    class="form-control @error('jumlah') is-invalid @enderror">
+                                @error('jumlah')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
                             <label for="">Anggota</label>
                             <select name="anggota_id" class="form-control @error('anggota_id') is-invalid @enderror" >
                                 @foreach($anggota as $data)

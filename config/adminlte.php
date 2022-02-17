@@ -227,20 +227,12 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
+       ['header' => 'Perpustakaan'],
         [
             'text' => 'dashboard',
             'url'  => 'admin/dashboard',
@@ -262,7 +254,7 @@ return [
         ],
         
         [
-            'text' => 'Sirkulasi',
+            'text' => 'Peminjaman',
             'icon'  => 'far fa-chart-bar',
             'url'  => 'admin/peminjaman',
         ],

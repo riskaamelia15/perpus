@@ -6,13 +6,24 @@
 
 <br>
 @endsection
-@section ('js')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}">
+    
+@endsection
+
+@section('js')
+<script  type="text/javascript" src="{{asset('DataTables/datatables.min.js')}}"> </script>
+<script>
+    $(document).ready(function(){
+        $('#buku').DataTable();
+    });
+</script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('js/sweetalert2.js')}}"></script>
 <script src="{{asset('js/delete.js')}}"></script>
 
-
 @endsection
+
 
 
 @section('content')
@@ -27,7 +38,8 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="buku" >
+                            <thead>
                             <tr>
                                 <th><i>Id Buku</i></th>
                                 <th><i>Kode Buku</i></th>
@@ -40,9 +52,11 @@
 
 
                             </tr>
+                            </thead>
+                            <tbody>
                             @php $no=1; @endphp
-                            @foreach ($buku as $data)
-                             <tr>
+                            @foreach ($buku as $data) 
+                            <tr>
                                  <td>{{$no++}}</td>
                                  <td>{{$data->kode_buku}}</td>
                                  <td>{{$data->judul_buku}}</td>
@@ -65,6 +79,7 @@
                                  </td>
                              </tr>
                             @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -77,10 +92,4 @@
 
 @endsection
 
-@section('css')
 
-@endsection
-
-@section('js')
-
-@endsection

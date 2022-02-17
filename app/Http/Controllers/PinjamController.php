@@ -53,14 +53,10 @@ class PinjamController extends Controller
             'tanggal_pinjam' => 'required',
             'tanggal_kembali' => 'required',
             'buku_id' => 'required',
-            'jumlah' => 'required',
+            'jumlah' => 'required|numeric',
             'anggota_id' => 'required',
           ]);
-          $stok = Buku::find($request->jumlah);
-          if ($stok->stok <= 0 ) {
-              flash('Maaf Stock Buku Habis', 'danger');
-              return redirect()->back();
-          }
+        
           $pinjam = new Pinjam;
         //   $pinjam->id_peminjaman = $request->id_peminjaman;
           $pinjam->tanggal_pinjam = $request->tanggal_pinjam;

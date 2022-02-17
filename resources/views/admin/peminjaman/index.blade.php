@@ -20,7 +20,8 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="pinjam">
+                            <thead>
                             <tr>
                                 <th><i>ID Peminjam</i></th>
                                 <th><i>Buku</i></th>
@@ -33,6 +34,8 @@
 
 
                             </tr>
+                            </thead>
+                            <tbody>
                             @php $no=1; @endphp
                             @foreach ($pinjam as $data)
                              <tr>
@@ -56,7 +59,7 @@
                                     </th>
                                     <th>
                                         @if ($durasi < 0)
-                                            <?php $denda = abs($durasi) * 1000 ; ?>
+                                            <?php $denda = abs($durasi) * 1500 ; ?>
                                             {{ $denda }}
                                         @else
                                             0
@@ -76,6 +79,7 @@
                                  </td>
                              </tr>
                             @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -89,9 +93,20 @@
 @endsection
 
 @section('css')
-
+    <link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}">
+    
 @endsection
 
 @section('js')
+<script  type="text/javascript" src="{{asset('DataTables/datatables.min.js')}}"> </script>
+<script>
+    $(document).ready(function(){
+        $('#pinjam').DataTable();
+    });
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('js/sweetalert2.js')}}"></script>
+<script src="{{asset('js/delete.js')}}"></script>
 
 @endsection
+

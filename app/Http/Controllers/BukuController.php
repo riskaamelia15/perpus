@@ -45,8 +45,8 @@ class BukuController extends Controller
             'judul_buku' => 'required',
             'penulis_buku' => 'required',
             'penerbit_buku' => 'required',
-            'tahun_penerbit' => 'required',
-            'stok' => 'required',
+            'tahun_penerbit' => 'required|numeric',
+            'stok' => 'required|numeric',
         ]);
         $buku = new Buku;
         // $buku->id = $request->id_buku;
@@ -56,10 +56,7 @@ class BukuController extends Controller
         $buku->penerbit_buku = $request->penerbit_buku;
         $buku->tahun_penerbit = $request->tahun_penerbit;
         $buku->stok = $request->stok;
-        Session::flash("flash_notification", [
-            "level" => "Berhasil",
-            "message" => "Data Berhasil Ditambah",
-        ]);
+        Alert::success('data '.$buku->judul_buku.'Berhasil Ditambahkan');
         $buku->save();
         
 
@@ -107,8 +104,8 @@ class BukuController extends Controller
             'judul_buku' => 'required',
             'penulis_buku' => 'required',
             'penerbit_buku' => 'required',
-            'tahun_penerbit' => 'required',
-            'stok' => 'required',
+            'tahun_penerbit' => 'required|numeric',
+            'stok' => 'required|numeric',
         ]);
         $buku = Buku::findOrFail($id);
         // $buku->id_buku = $request->id_buku;
@@ -118,6 +115,7 @@ class BukuController extends Controller
          $buku->penerbit_buku = $request->penerbit_buku;
         $buku->tahun_penerbit = $request->tahun_penerbit;
         $buku->stok = $request->stok;
+        Alert::success('data '.$buku->judul_buku.'Berhasil Diedit');
         $buku->save();
         return redirect()->route('buku.index');
 

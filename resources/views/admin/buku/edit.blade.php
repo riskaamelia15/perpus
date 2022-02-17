@@ -54,7 +54,7 @@
 
                             <div class="form-group">
                                 <label for="">Tahun Terbit</label>
-                                <input type="number" name="tahun_penerbit" value="{{ $buku->tahun_penerbit }}"
+                                <input type="numeric" name="tahun_penerbit" value="{{ $buku->tahun_penerbit }}"
                                     class="form-control @error('tahun_penerbit') is-invalid @enderror">
                                 @error('tahun_penerbit')
                                     <span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Stok</label>
-                                <input type="number" name="stok" value="{{ $buku->stok }}"
+                                <input type="numeric" name="stok" value="{{ $buku->stok }}"
                                     class="form-control @error('stok') is-invalid @enderror">
                                 @error('stok')
                                     <span class="invalid-feedback" role="alert">

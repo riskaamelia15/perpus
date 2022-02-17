@@ -6,13 +6,6 @@
 
 <br>
 @endsection
-@section ('js')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{asset('js/sweetalert2.js')}}"></script>
-<script src="{{asset('js/delete.js')}}"></script>
-
-
-@endsection
 
 
 @section('content')
@@ -27,7 +20,9 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="anggota">
+
+                            <thead>
                             <tr>
                                 <th><i>Id Anggota</i></th>
                                 <th><i>Kode Anggota</i></th>
@@ -40,6 +35,8 @@
 
 
                             </tr>
+                            </thead>
+                            <tbody>
                             @php $no=1; @endphp
                             @foreach ($anggota as $data)
                              <tr>
@@ -53,8 +50,6 @@
 
 
 
-
-
                                  <td>
                                      <form action="{{route('anggota.destroy',$data->id)}}" method="post">
                                         @method('delete')
@@ -65,6 +60,7 @@
                                  </td>
                              </tr>
                             @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -78,9 +74,19 @@
 @endsection
 
 @section('css')
-
+    <link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}">
+    
 @endsection
 
 @section('js')
+<script  type="text/javascript" src="{{asset('DataTables/datatables.min.js')}}"> </script>
+<script>
+    $(document).ready(function(){
+        $('#anggota').DataTable();
+    });
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('js/sweetalert2.js')}}"></script>
+<script src="{{asset('js/delete.js')}}"></script>
 
 @endsection

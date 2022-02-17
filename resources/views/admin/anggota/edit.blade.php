@@ -26,7 +26,7 @@
                                     class="form-control @error('nama_anggota') is-invalid @enderror">
                                 @error('nama_anggota')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Masukan Nama Anggota</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -36,7 +36,7 @@
                                     class="form-control @error('jk_anggota') is-invalid @enderror">
                                 @error('jk_anggota')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Masukan Jenis Kelamin</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -54,7 +54,7 @@
 
                             <div class="form-group">
                                 <label for="">No Telepon</label>
-                                <input type="text" name="no_telp_anggota" value="{{ $anggota->no_telp_anggota }}"
+                                <input type="numeric" min="11" max="13" name="no_telp_anggota" value="{{ $anggota->no_telp_anggota }}"
                                     class="form-control @error('no_telp_anggota') is-invalid @enderror">
                                 @error('no_telp_anggota')
                                     <span class="invalid-feedback" role="alert">
