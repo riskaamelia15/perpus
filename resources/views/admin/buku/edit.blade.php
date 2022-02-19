@@ -68,7 +68,7 @@
                                     class="form-control @error('stok') is-invalid @enderror">
                                 @error('stok')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>Tolong Masukan Number</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>

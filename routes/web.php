@@ -1,11 +1,15 @@
 <?php
     
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PengembalianController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PinjamController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\LaporanController;
+
 
 
 
@@ -53,7 +57,10 @@ Auth::routes(
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::get('/', function () {
             return view('admin.index');
+            
         });
+        Route::get('laporan', [LaporanController::class, 'pinjam'])->name('getPinjam');
+     Route::post('laporan', [LaporanController::class, 'reportPinjam'])->name('reportPinjam');
         });
 
 
@@ -66,8 +73,10 @@ Route::group(['prefix' => 'user','middleware'=>['auth']],
      route::resource('admin/buku',BukuController::class);
      route::resource('admin/anggota',AnggotaController::class);
      route::resource('admin/pengembalian',PengembalianController::class);
+     route::resource('admin/users',UserController::class);
      route::resource('admin/peminjaman',PinjamController::class);
      route::resource('admin/petugas',PetugasController::class);
+     
      
 
       Route::get('admin/dashboard', 'App\Http\Controllers\AdminController@dashboard', function () {

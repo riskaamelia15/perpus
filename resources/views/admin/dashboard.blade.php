@@ -19,7 +19,7 @@ Beranda
                     <div class="info-box-content">
                         <span class="info-box-text">Buku</span>
                         <span class="info-box-number">
-                            {{$buku}} buku
+                            {{$buku}} Buku
                         </span>
 
                     </div>
@@ -36,7 +36,7 @@ Beranda
                     <div class="info-box-content">
                         <span class="info-box-text">Anggota</span>
                         <span class="info-box-number">
-                        {{ $anggota }} anggota
+                        {{ $anggota }} Anggota
                         </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -55,7 +55,7 @@ Beranda
                     <div class="info-box-content">
                         <span class="info-box-text">petugas</span>
                         <span class="info-box-number">
-                            {{$petugas}} petugas
+                            {{$users}} Petugas
                         </span>
 
                     </div>
@@ -72,7 +72,7 @@ Beranda
                     <div class="info-box-content">
                         <span class="info-box-text">Peminjam</span>
                         <span class="info-box-number">
-                            {{$pinjam}} pinjam
+                            {{$pinjam}} Pinjam
                         </span>
 
                     </div>

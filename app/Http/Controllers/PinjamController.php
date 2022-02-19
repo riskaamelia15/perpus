@@ -6,6 +6,7 @@ use App\Models\pinjam;
 use App\Models\anggota;
 use App\Models\Buku;
 use App\Models\Petugas;
+use Alert;
 
 
 
@@ -67,6 +68,7 @@ class PinjamController extends Controller
           $pinjam->save();
           $buku = Buku::findOrFail($request->buku_id = $request->buku_id);
           $buku->stok -= $request-> jumlah;
+        Alert::success('data Berhasil Ditambahkan');
           $buku->save();
         return redirect()->route('peminjaman.index');
 
@@ -92,9 +94,10 @@ class PinjamController extends Controller
      */
     public function edit($id)
     {
-        $buku = Buku::findOrFail($id);
+        $buku = Buku::all();
+        $anggota = Anggota::all();
         $pinjam = Pinjam::findOrFail($id);
-        return view('admin.peminjaman.edit', compact('pinjam','buku'));
+        return view('admin.peminjaman.edit', compact('pinjam','buku','anggota'));
     }
 
     /**
@@ -119,6 +122,7 @@ class PinjamController extends Controller
           $pinjam->tanggal_kembali = $request->tanggal_kembali;
           $pinjam->buku_id = $request->buku_id;
           $pinjam->anggota_id = $request->anggota_id;
+        Alert::success('data Berhasil Diubah');
           $pinjam->save();
          return redirect()->route('peminjaman.index');
     }

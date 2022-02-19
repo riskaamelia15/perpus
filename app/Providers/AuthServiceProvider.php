@@ -35,7 +35,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('AksesPengguna', function ($user) {
-            return $user->hasRole('pengguna');
+            return $user->hasRole('petugas');
         });
     }
 }

@@ -66,15 +66,13 @@
                                         @endif
                                     </th>
 
-
-
-
-
                                  <td>
+                                    <a href="{{route('peminjaman.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+
                                      <form action="{{route('peminjaman.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin mengembalikan')">KEMBALIKAN</button>
+                                        <button type="submit" class="btn btn-danger delete-confirm">Kembalikan</button>
                                     </form>
                                  </td>
                              </tr>
@@ -92,7 +90,7 @@
 
 @endsection
 
-@section('css')
+@section('css')oewjuqqqqqqq
     <link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}">
     
 @endsection

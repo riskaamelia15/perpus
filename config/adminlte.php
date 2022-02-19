@@ -276,12 +276,19 @@ return [
                 ],
                 [
                     'text' => 'Petugas',
-                    'url'  => 'admin/petugas',
+                    'url'  => 'admin/users',
                     'icon'  => 'far fa-fw fa-user',
                     'can' => 'AksesAdmin',
                 ],
             ]
-        ]
+            ],
+
+            [
+                'text' => 'Laporan',
+                'icon'  => 'far fa-chart-bar',
+                'url'  => 'admin/laporan',
+            ],
+        
         
 
     ],

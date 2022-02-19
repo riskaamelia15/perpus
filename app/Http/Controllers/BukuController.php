@@ -6,6 +6,7 @@ use App\Models\Buku;
 use Illuminate\Http\Request;
 use Session;
 use Alert;
+use Str;
 
 class BukuController extends Controller
 {
@@ -41,7 +42,7 @@ class BukuController extends Controller
     {
         $request->validate([
             // 'id' => 'required|unique:bukus',
-            'kode_buku' => 'required',
+            // 'kode_buku' => 'required',
             'judul_buku' => 'required',
             'penulis_buku' => 'required',
             'penerbit_buku' => 'required',
@@ -49,8 +50,7 @@ class BukuController extends Controller
             'stok' => 'required|numeric',
         ]);
         $buku = new Buku;
-        // $buku->id = $request->id_buku;
-        $buku->kode_buku = $request->kode_buku;
+        $buku->kode_buku = Str::random(4,5);
         $buku->judul_buku = $request->judul_buku;
         $buku->penulis_buku = $request->penulis_buku;
         $buku->penerbit_buku = $request->penerbit_buku;
@@ -100,7 +100,7 @@ class BukuController extends Controller
     {
         $request->validate([
             // 'id_buku' => 'required',
-            'kode_buku' => 'required',
+            // 'kode_buku' => 'required',
             'judul_buku' => 'required',
             'penulis_buku' => 'required',
             'penerbit_buku' => 'required',
@@ -109,10 +109,10 @@ class BukuController extends Controller
         ]);
         $buku = Buku::findOrFail($id);
         // $buku->id_buku = $request->id_buku;
-        $buku->kode_buku = $request->kode_buku;
+        $buku->kode_buku = Str::random(100);
         $buku->judul_buku = $request->judul_buku;
         $buku->penulis_buku = $request->penulis_buku;
-         $buku->penerbit_buku = $request->penerbit_buku;
+        $buku->penerbit_buku = $request->penerbit_buku;
         $buku->tahun_penerbit = $request->tahun_penerbit;
         $buku->stok = $request->stok;
         Alert::success('data '.$buku->judul_buku.'Berhasil Diedit');

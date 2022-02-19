@@ -17,16 +17,7 @@
                 <div class="card-body">
                     <form action="{{route('buku.store')}}" method="post">
                         @csrf
-                        <div class="form-group">
-                            <label for="">Kode Buku</label>
-                            <input type="text" name="kode_buku" 
-                                class="form-control @error('kode_buku') is-invalid @enderror">
-                            @error('kode_buku')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                        
                         <div class="form-group">
                             <label for="">Judul Buku</label>
                             <input type="text" name="judul_buku"
