@@ -25,6 +25,7 @@
                             <tr>
                                 <th><i>ID Peminjam</i></th>
                                 <th><i>Buku</i></th>
+                                <th><i>Jumlah</i></th>
                                 <th><i>Anggota</i></th>
                                 <th><i>Tanggal Pinjam</i></th>
                                 <th><i>Tanggal Kembali</i></th>
@@ -41,6 +42,7 @@
                              <tr>
                                  <td>{{$no++}}</td>
                                  <td>{{$data->bukus->judul_buku}}</td>
+                                 <td>{{$data->jumlah}}</td>
                                  <td>{{$data->anggotas->nama_anggota}}</td>
                                  <td>{{$data->tanggal_pinjam}}</td>
                                  <td>{{$data->tanggal_kembali}}</td>
@@ -73,8 +75,10 @@
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="btn btn-danger delete-confirm">Kembalikan</button>
+                                        
                                     </form>
                                  </td>
+                                 
                              </tr>
                             @endforeach
                             </tbody>
@@ -90,7 +94,7 @@
 
 @endsection
 
-@section('css')oewjuqqqqqqq
+@section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}">
     
 @endsection
@@ -104,7 +108,27 @@
 </script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('js/sweetalert2.js')}}"></script>
-<script src="{{asset('js/delete.js')}}"></script>
-
+<script>
+    $(".delete-confirm").click(function (event) {
+        var tanggal = '<?php echo date('d-m-Y'); ?>';
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        Swal.fire({
+            title: "Apakah Kamu Yakin?",
+            text: 'Buku Telah Dikembalikan tanggal '+ tanggal +'?',
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, Sudah dikembalikan!",
+            cancelButtonText: "Belum"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+    </script>
 @endsection
 

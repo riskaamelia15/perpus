@@ -15,7 +15,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('LAPORAN BULANAN') }}</div>
+                    <div class="card-header">{{ __('LAPORAN PEMINJAMAN') }}</div>
                     <div class="card-body">
                         <form action="{{ route('reportPinjam') }}" method="post">
                             @csrf

@@ -22,12 +22,14 @@
                     <thead>
                         <center>
                         <tr>
-                            <th>No</th>
-                            <th>Nama Peminjaman</th>
-                            <th>Judul Buku</th>
-                            <th>Tanggal Pinjam</th>
-                            <th>Tanggal Kembali</th>
-                            <th>denda</th>
+                            <th><i>ID Peminjam</i></th>
+                            <th><i>Buku</i></th>
+                            <th><i>Jumlah</i></th>
+                            <th><i>Anggota</i></th>
+                            <th><i>Tanggal Pinjam</i></th>
+                            <th><i>Tanggal Kembali</i></th>
+                            <th><i>Durasi Pinjam</i></th>
+                            <th><i>Denda</i></th>
                             </tr>
                         </center>
                     </thead>
@@ -38,18 +40,26 @@
                             <center>
                             <tr>
                               <td>{{ $no++ }}</td>
-                              <td>{{ $data->anggotas->nama_anggota }}</td>
                               <td>{{ $data->Bukus->judul_buku }}</td>
+                              <td>{{ $data->jumlah }}</td>
+                              <td>{{ $data->anggotas->nama_anggota }}</td>
                               <td>{{ $data->tanggal_pinjam }}</td>
                               <td>{{ $data->tanggal_kembali }}</td>
                               
-                            <th>
-
+                              <th>
                                 <?php
-                                $datetime2 = strtotime($data->tanggal_kembali) ;
-                                $datenow = strtotime(date("Y-m-d"));
-                                $durasi = ($datetime2 - $datenow) / 86400 ;
-                            ?>                                @if ($durasi < 0)
+                                    $datetime2 = strtotime($data->tanggal_kembali) ;
+                                    $datenow = strtotime(date("Y-m-d"));
+                                    $durasi = ($datetime2 - $datenow) / 86400 ;
+                                ?>
+                                @if ($durasi < 0 )
+                                    Durasi Habis / {{ $durasi }} Hari
+                                @else
+                                    {{ $durasi }} Hari
+                                @endif
+                            </th>
+                            <th>
+                                @if ($durasi < 0)
                                     <?php $denda = abs($durasi) * 1500 ; ?>
                                     {{ $denda }}
                                 @else

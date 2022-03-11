@@ -10,16 +10,7 @@
                         <form action="{{ route('anggota.update', $anggota->id) }}" method="post">
                             @csrf
                             @method('put')
-                            <div class="form-group">
-                                <label for="">Kode Anggota</label>
-                                <input type="text" name="kode_anggota" value="{{ $anggota->kode_anggota }}"
-                                    class="form-control @error('kode_anggota') is-invalid @enderror">
-                                @error('kode_anggota')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                           
                             <div class="form-group">
                                 <label for="">Nama Anggota</label>
                                 <input type="text" name="nama_anggota" value="{{ $anggota->nama_anggota }}"

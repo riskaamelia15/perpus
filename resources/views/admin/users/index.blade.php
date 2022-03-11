@@ -29,25 +29,26 @@
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(".delete-confirm").click(function(event) {
+        $(".delete-confirm").click(function (event) {
             var form = $(this).closest("form");
             var name = $(this).data("name");
             event.preventDefault();
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: "Apakah Kamu Yakin?",
+                text: "Buku Telah Dikembalikan?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!",
+                confirmButtonText: "Ya, Saya Yakin!",
+                cancelButtonText: "Batal"
             }).then((result) => {
                 if (result.isConfirmed) {
                     form.submit();
                 }
             });
         });
-    </script>
+        </script>
     <script src="{{ asset('select2/select2.min.js') }}"></script>
     <script src="{{ asset('DataTables/datatables.min.js') }}"></script>
     <script>
@@ -104,13 +105,10 @@
                                                         data-toggle="modal"
                                                         data-target=".users-edit-{{ $user->id }}">Edit
                                                     </a>
-                                                    <a class="btn btn-outline btn-sm btn-outline-info" data-toggle="modal"
-                                                        data-target=".users-show-{{ $user->id }}">Show
-                                                    </a>
+                                                    
                                                 </td>
                                             </tr>
                                             @include('admin.users.edit')
-                                            @include('admin.users.show')
                                         @else
                                             <tr>
                                                 <td>{{ $no++ }}</td>
@@ -129,17 +127,13 @@
                                                             data-toggle="modal"
                                                             data-target=".users-edit-{{ $user->id }}">Edit
                                                         </a>
-                                                        <a class="btn btn-outline btn-sm btn-outline-info"
-                                                            data-toggle="modal"
-                                                            data-target=".users-show-{{ $user->id }}">Show
-                                                        </a>
+                                                        
                                                         <button type="submit"
                                                             class="btn btn-outline btn-sm btn-outline-danger delete-confirm">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>
                                             @include('admin.users.edit')
-                                            @include('admin.users.show')
                                         @endif
                                     @endforeach
                                 </tbody>

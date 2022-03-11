@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\anggota;
 use Illuminate\Http\Request;
 use Alert;
+use Str;
 
 class AnggotaController extends Controller
 {
@@ -40,7 +41,7 @@ class AnggotaController extends Controller
     {
         $request->validate([
             // 'id' => 'required',
-            'kode_anggota' => 'required',
+            // 'kode_anggota' => 'required',
             'nama_anggota' => 'required',
             'jk_anggota' => 'required ',
             'jurusan_anggota' => 'required',
@@ -49,7 +50,7 @@ class AnggotaController extends Controller
         ]);
          $anggota = new anggota;
         // $anggota->id = $request->id;
-        $anggota->kode_anggota = $request->kode_anggota;
+        $anggota->kode_anggota = Str::random(4,5);
         $anggota->nama_anggota = $request->nama_anggota;
         $anggota->jk_anggota = $request->jk_anggota;
         $anggota->jurusan_anggota = $request->jurusan_anggota;
@@ -95,7 +96,7 @@ class AnggotaController extends Controller
     {
         $request->validate([
             // 'id' => 'required',
-            'kode_anggota' => 'required',
+            // 'kode_anggota' => 'required',
             'nama_anggota' => 'required',
             'jk_anggota' => 'required ',
             'jurusan_anggota' => 'required',
@@ -103,13 +104,13 @@ class AnggotaController extends Controller
             'alamat' => 'required ',
         ]);
         $anggota = Anggota::findOrFail($id);
-        $anggota->kode_anggota = $request->kode_anggota;
+        $anggota->kode_anggota = Str::random(4,5);
         $anggota->nama_anggota = $request->nama_anggota;
         $anggota->jk_anggota = $request->jk_anggota;
         $anggota->jurusan_anggota = $request->jurusan_anggota;
         $anggota->no_telp_anggota = $request->no_telp_anggota;
         $anggota->alamat = $request->alamat;
-        Alert::success('data '.$buku->nama_anggota.'Berhasil Diedit');
+        Alert::success('data '.$anggota->nama_anggota.'Berhasil diubah');
         $anggota->save();
         return redirect()->route('anggota.index');
     }

@@ -23,7 +23,7 @@
                             <label for="">Jabatan</label>
                             <input type="text" name="jabatan_petugas" class="form-control @error('jabatan_petugas') is-invalid @enderror">
                             <label for="">No Telepon</label>
-                            <input type="text" name="no_telp" class="form-control @error('no_telp') is-invalid @enderror">
+                            <input type="numeric" name="no_telp" class="form-control @error('no_telp') is-invalid @enderror">
                             <label for="">Alamat</label>
                             <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
 

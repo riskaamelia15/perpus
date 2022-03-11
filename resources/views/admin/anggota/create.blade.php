@@ -18,16 +18,7 @@
                     <form action="{{route('anggota.store')}}" method="post">
                         @csrf
                         
-                        <div class="form-group">
-                            <label for="">Kode Anggota</label>
-                            <input type="text" name="kode_anggota" 
-                                class="form-control @error('kode_anggota') is-invalid @enderror">
-                            @error('kode_anggota')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                        
                         <div class="form-group">
                             <label for="">Nama Anggota</label>
                             <input type="text" name="nama_anggota"
@@ -55,7 +46,7 @@
                             </select>
                             <div class="form-group">
                                 <label for="">No Telepon</label>
-                                <input type="numeric" min="11" max="13" name="no_telp_anggota
+                                <input type="numeric" name="no_telp_anggota"
                                     class="form-control @error('no_telp_anggota') is-invalid @enderror">
                                 @error('no_telp_anggota')
                                     <span class="invalid-feedback" role="alert">
