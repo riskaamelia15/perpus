@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -17,23 +18,23 @@ class UserSeeder extends Seeder
     {
 
         $admin = Role::create([
-            'name'=>'admin',
-            'display_name'=>'User Administrator'
+            'name' => 'admin',
+            'display_name' => 'User Administrator',
         ]);
 
         $pengguna = Role::create([
             'name' => 'petugas',
-            'display_name'=>'User Biasa'
+            'display_name' => 'User Biasa',
         ]);
         $user = new User();
-        $user->name='Ikhsan Muhamad Ramadan';
-        $user->email='admin@gmail.com';
+        $user->name = 'Nabila khaerunnisa';
+        $user->email = 'admin@gmail.com';
         $user->password = Hash::make('admin');
         $user->save();
 
         $pengunjung = new user();
-        $pengunjung->name='Ahmad';
-        $pengunjung->email='petugas@gmail.com';
+        $pengunjung->name = 'Meylani';
+        $pengunjung->email = 'petugas@gmail.com';
         $pengunjung->password = Hash::make('pengguna');
         $pengunjung->save();
 

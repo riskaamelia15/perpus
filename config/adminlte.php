@@ -12,9 +12,9 @@ return [
     | For detailed instructions you can look the title section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
-    'title' => 'Perpustakaan',
+    'title' => 'Peminjaman buku',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -28,7 +28,7 @@ return [
     | For detailed instructions you can look the favicon section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'use_ico_only' => false,
     'use_full_favicon' => false,
@@ -43,7 +43,7 @@ return [
     | For detailed instructions you can look the logo section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'logo' => 'Perpustakaan</b>',
     'logo_img' => 'vendor/adminlte/dist/img/buku.jpg',
@@ -62,7 +62,7 @@ return [
     | For detailed instructions you can look the user menu section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'usermenu_enabled' => true,
     'usermenu_header' => false,
@@ -81,7 +81,7 @@ return [
     | For detailed instructions you can look the layout section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'layout_topnav' => null,
     'layout_boxed' => null,
@@ -100,7 +100,7 @@ return [
     | For detailed instructions you can look the auth classes section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
@@ -119,7 +119,7 @@ return [
     | For detailed instructions you can look the admin panel classes here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'classes_body' => '',
     'classes_brand' => '',
@@ -143,7 +143,7 @@ return [
     | For detailed instructions you can look the sidebar section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
@@ -165,7 +165,7 @@ return [
     | For detailed instructions you can look the right sidebar section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
@@ -185,7 +185,7 @@ return [
     | For detailed instructions you can look the urls section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'use_route_url' => false,
     'dashboard_url' => 'home',
@@ -206,7 +206,7 @@ return [
     | For detailed instructions you can look the laravel mix section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     |
-    */
+     */
 
     'enabled_laravel_mix' => false,
     'laravel_mix_css_path' => 'css/app.css',
@@ -222,74 +222,72 @@ return [
     | For detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
-    */
+     */
 
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'fullscreen-widget',
+            'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-       ['header' => 'Perpustakaan'],
+        ['header' => 'Peminjaman buku'],
         [
             'text' => 'dashboard',
-            'url'  => 'admin/dashboard',
+            'url' => 'admin/dashboard',
             'icon' => 'fas fa-fw fa-home',
-            'can' => 'AksesAdmin'
+            'can' => 'AksesAdmin',
         ],
 
         [
             'text' => 'dashboard',
-            'url'  => 'petugas/dashboard',
+            'url' => 'petugas/dashboard',
             'icon' => 'fas fa-fw fa-home',
-            'can' => 'AksesPengguna'
+            'can' => 'AksesPengguna',
         ],
 
         [
             'text' => 'Data Buku',
-            'url'  => 'admin/buku',
-            'icon'  => 'fa fa-book',
+            'url' => 'admin/buku',
+            'icon' => 'fa fa-book',
         ],
-        
+
         [
             'text' => 'Peminjaman',
-            'icon'  => 'far fa-chart-bar',
-            'url'  => 'admin/peminjaman',
+            'icon' => 'far fa-chart-bar',
+            'url' => 'admin/peminjaman',
         ],
         // [
         //     'text' => 'Pengembalian',
         //     'icon'  => 'far fa-chart-bar',
         //     'url'  => 'admin/pengembalian',
         //     ],
-        
+
         [
             'text' => 'pengguna',
             'icon' => 'far fa-fw fa-id-card',
-            'submenu' => 
+            'submenu' =>
             [
                 [
                     'text' => 'Anggota',
-                    'url'  => 'admin/anggota',
-                    'icon'  => 'far fa-fw fa-user',
+                    'url' => 'admin/anggota',
+                    'icon' => 'far fa-fw fa-user',
                 ],
                 [
                     'text' => 'Petugas',
-                    'url'  => 'admin/users',
-                    'icon'  => 'far fa-fw fa-user',
+                    'url' => 'admin/users',
+                    'icon' => 'far fa-fw fa-user',
                     'can' => 'AksesAdmin',
                 ],
-            ]
             ],
+        ],
 
-            [
-                'text' => 'Laporan',
-                'icon'  => 'far fa-chart-bar',
-                'url'  => 'admin/laporan',
-            ],
-        
-        
+        [
+            'text' => 'Laporan',
+            'icon' => 'far fa-chart-bar',
+            'url' => 'admin/laporan',
+        ],
 
     ],
 
@@ -303,7 +301,7 @@ return [
     | For detailed instructions you can look the menu filters section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
-    */
+     */
 
     'filters' => [
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
@@ -325,7 +323,7 @@ return [
     | For detailed instructions you can look the plugins section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Plugins-Configuration
     |
-    */
+     */
 
     'plugins' => [
         'Datatables' => [
@@ -411,7 +409,7 @@ return [
     | For detailed instructions you can look the iframe mode section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/IFrame-Mode-Configuration
     |
-    */
+     */
 
     'iframe' => [
         'default_tab' => [
@@ -443,7 +441,7 @@ return [
     | For detailed instructions you can look the livewire here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     |
-    */
+     */
 
     'livewire' => false,
 ];

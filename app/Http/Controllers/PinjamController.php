@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pinjam;
+use Alert;
 use App\Models\anggota;
 use App\Models\Buku;
 use App\Models\Petugas;
-use Alert;
-
-
-
+use App\Models\pinjam;
 use Illuminate\Http\Request;
 
 class PinjamController extends Controller
@@ -22,9 +19,8 @@ class PinjamController extends Controller
     public function index()
     {
         $pinjam = Pinjam::all();
-        return view('admin.peminjaman.index',compact('pinjam'));
+        return view('admin.peminjaman.index', compact('pinjam'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -35,11 +31,10 @@ class PinjamController extends Controller
     {
         $buku = Buku::all();
         $anggota = Anggota::all();
-        $petugas  = Petugas::all();
+        $petugas = Petugas::all();
 
-        return view('admin.peminjaman.create', compact('buku','anggota','petugas'));
+        return view('admin.peminjaman.create', compact('buku', 'anggota', 'petugas'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -56,20 +51,20 @@ class PinjamController extends Controller
             'buku_id' => 'required',
             'jumlah' => 'required|numeric',
             'anggota_id' => 'required',
-          ]);
-        
-          $pinjam = new Pinjam;
+        ]);
+
+        $pinjam = new Pinjam;
         //   $pinjam->id_peminjaman = $request->id_peminjaman;
-          $pinjam->tanggal_pinjam = $request->tanggal_pinjam;
-          $pinjam->tanggal_kembali = $request->tanggal_kembali;
-          $pinjam->buku_id = $request->buku_id;
-          $pinjam->jumlah = $request->jumlah;
-          $pinjam->anggota_id = $request->anggota_id;
-          $pinjam->save();
-          $buku = Buku::findOrFail($request->buku_id = $request->buku_id);
-          $buku->stok -= $request-> jumlah;
+        $pinjam->tanggal_pinjam = $request->tanggal_pinjam;
+        $pinjam->tanggal_kembali = $request->tanggal_kembali;
+        $pinjam->buku_id = $request->buku_id;
+        $pinjam->jumlah = $request->jumlah;
+        $pinjam->anggota_id = $request->anggota_id;
+        $pinjam->save();
+        $buku = Buku::findOrFail($request->buku_id = $request->buku_id);
+        $buku->stok -= $request->jumlah;
         Alert::success('data Berhasil Ditambahkan');
-          $buku->save();
+        $buku->save();
         return redirect()->route('peminjaman.index');
 
     }
@@ -97,7 +92,7 @@ class PinjamController extends Controller
         $buku = Buku::all();
         $anggota = Anggota::all();
         $pinjam = Pinjam::findOrFail($id);
-        return view('admin.peminjaman.edit', compact('pinjam','buku','anggota'));
+        return view('admin.peminjaman.edit', compact('pinjam', 'buku', 'anggota'));
     }
 
     /**
@@ -107,7 +102,7 @@ class PinjamController extends Controller
      * @param  \App\Models\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             // 'id_peminjaman' => 'required',
@@ -115,16 +110,16 @@ class PinjamController extends Controller
             'tanggal_kembali' => 'required',
             'buku_id' => 'required',
             'anggota_id' => 'required',
-          ]);
-          $pinjam = Pinjam::findOrFail($id);
+        ]);
+        $pinjam = Pinjam::findOrFail($id);
         //   $pinjam->id_peminjaman = $request->id_peminjaman;
-          $pinjam->tanggal_pinjam = $request->tanggal_pinjam;
-          $pinjam->tanggal_kembali = $request->tanggal_kembali;
-          $pinjam->buku_id = $request->buku_id;
-          $pinjam->anggota_id = $request->anggota_id;
+        $pinjam->tanggal_pinjam = $request->tanggal_pinjam;
+        $pinjam->tanggal_kembali = $request->tanggal_kembali;
+        $pinjam->buku_id = $request->buku_id;
+        $pinjam->anggota_id = $request->anggota_id;
         Alert::success('data Berhasil Diubah');
-          $pinjam->save();
-         return redirect()->route('peminjaman.index');
+        $pinjam->save();
+        return redirect()->route('peminjaman.index');
     }
 
     /**
@@ -136,11 +131,11 @@ class PinjamController extends Controller
     public function destroy($id)
     {
         $pinjam = pinjam::find($id);
-        $buku = Buku::where("id","=", $pinjam->buku_id)->first();
-        $buku->stok += $pinjam->jumlah ;
+        $buku = Buku::where("id", "=", $pinjam->buku_id)->first();
+        $buku->stok += $pinjam->jumlah;
         $pinjam->delete();
-        $buku->save() ;
-        alert::success('Mantap','Data berhasil dihapus');
+        $buku->save();
+        alert::success('Mantap', 'Buku berhasil di kembalikan');
         return redirect()->route('peminjaman.index');
     }
 }
